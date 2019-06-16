@@ -1,12 +1,19 @@
 import React from 'react';
-import MainContents from '../templates/MainContents';
+import '../styles/signin.css';
+import { GridColumn, Header } from 'semantic-ui-react';
+import CenteredForm from '../templates/CenteredForm';
 
 export default class SigninPage extends React.Component {
     render() {
         return (
-            <MainContents>
-                <div>This is SigninPage</div>
-            </MainContents>
+            <CenteredForm>
+                <GridColumn>
+                    <Header as='h2' className="blue">
+                        Sign in to your Account
+                    </Header>
+                    GridColumn
+                </GridColumn>
+            </CenteredForm>
         );
     };
 }
