@@ -20,7 +20,7 @@ export default class ChatLogs extends React.Component {
 
     render() {
         return (
-            <Segment style={{overflow: 'auto', height: '50vh'}}>
+            <Segment inverted style={{overflow: 'auto', height: '50vh'}}>
                 {this.renderMessages()}
             </Segment>
         );

@@ -3,9 +3,8 @@ import { Message } from 'semantic-ui-react';
 
 export default class ChatItem extends React.Component {
     render() {
-        console.log(this.props);
         return (
-            <Message>{this.props.text}</Message>
+            <Message className="inverted">{this.props.text}</Message>
         )
     }
 }
