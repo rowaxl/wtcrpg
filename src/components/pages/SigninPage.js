@@ -1,7 +1,7 @@
 import React from 'react';
-import '../styles/signin.css';
+import 'components/styles/signin.css';
 import { GridColumn, Header } from 'semantic-ui-react';
-import CenteredForm from '../templates/CenteredForm';
+import CenteredForm from 'components/templates/CenteredForm';
 
 export default class SigninPage extends React.Component {
     render() {
