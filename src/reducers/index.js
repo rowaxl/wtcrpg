@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
-import messageReducer from 'reducers/messageReducer';
-import messageListReducer from 'reducers/messageListReducer';
+import messagesReducer from 'reducers/messagesReducer';
 
 export default combineReducers({
-  message: messageReducer,
-  messageList: messageListReducer
+  messages: messagesReducer
 });
