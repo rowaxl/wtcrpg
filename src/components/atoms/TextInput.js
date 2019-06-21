@@ -1,7 +1,9 @@
 import React from 'react';
 import { Input } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import * as actions from 'actions';
 
-export default class TextInput extends React.Component {
+class TextInput extends React.Component {
     constructor(props) {
         super(props);
         this.state = {value: ''};
@@ -16,10 +18,14 @@ export default class TextInput extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        if(!this.state.value) return;
-        
-        // TODO: when submit, run actions to post
-        console.log(this.state.value);
+        const text = this.state.value;
+        if(!text) return;
+
+        // TODO: this will be DELETED
+        const _id = Math.max(this.props.messages.map(message => message.id));
+
+        // TODO: Get User info from redux
+        this.props.sendMessage({id:_id, user:{name:"You"}, text, created:Date.now()});
         this.setState({ value: '' });
     }
 
@@ -38,3 +44,10 @@ export default class TextInput extends React.Component {
         )
     }
 }
+
+// DEV: THIS WILL BE CLEANED
+const mapStateToProps = state => {
+    return {messages: state.messages};
+}
+
+export default connect(mapStateToProps, actions)(TextInput);
