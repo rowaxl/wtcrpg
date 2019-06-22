@@ -16,7 +16,7 @@ class ChatLogs extends React.Component {
 
     render() {
         return (
-            <Segment inverted style={{overflow: 'auto', height: '50vh'}}>
+            <Segment inverted style={{overflow: 'auto', height: '85vh'}}>
                 {this.renderMessages()}
             </Segment>
         );
