@@ -8,8 +8,8 @@ import TextInput from 'components/atoms/TextInput';
 export default class ChatPage extends React.Component {
     render() {
         return (
-            <MainContents>
-                <Header as='h2'>ChatPage</Header>
+            <MainContents style={{paddingTop: "12px"}}>
+                <Header as='h2'>Channel: #Test</Header>
                 <ChatLogs />
                 <TextInput />
             </MainContents>
