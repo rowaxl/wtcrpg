@@ -9,7 +9,7 @@ export default ({ children, initialState = {
   {id:2, user:{name:'Wren', icon:''}, text:'Text02', created:1561037075981},
   {id:3, user:{name:'Root', icon:''}, text:'Text03', created:1561037255981},
   {id:4, user:{name:'Show', icon:''}, text:'Text04', created:1561038055981}],
-  channel: { name: 'Library' }
+  channels: { name: 'Library' }
 } }) => {
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
     const store = createStore(

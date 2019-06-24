@@ -1,5 +1,5 @@
 import React from 'react';
-import 'components/styles/signin.css';
+import 'components/styles/SigninPage.css';
 import { GridColumn, Header } from 'semantic-ui-react';
 import CenteredForm from 'components/templates/CenteredForm';
 
