@@ -4,6 +4,22 @@ import { connect } from 'react-redux';
 import ChatItem from 'components/molecules/ChatItem';
 
 class ChatLogs extends React.Component {
+    constructor(props) {
+        super(props);
+        this.chatLogsRef = React.createRef();
+    }
+
+    componentDidUpdate = () => {
+        this.scrollToBottom();
+    }
+
+    scrollToBottom = () => {
+        const chatContainer = this.chatLogsRef.current;
+        console.log(chatContainer);
+        if(!chatContainer) return;
+        this.chatLogsRef.current.scrollTo(0, 10000);
+    }
+
     renderMessages = () => {
         const messages = this.props.messages;
 
@@ -16,12 +32,19 @@ class ChatLogs extends React.Component {
 
     render() {
         return (
-            <Segment inverted style={{overflow: 'auto', height: '85vh'}}>
-                {this.renderMessages()}
-            </Segment>
+            // refs fail. why?
+            <ChatLogTarget ref={this.chatLogsRef} children={this.renderMessages()} />
         );
     };
 }
+
+const ChatLogTarget = React.forwardRef((props, ref) => {
+    return (
+        <Segment ref={ref} inverted style={{overflow: 'auto', height: '70vh'}}>
+            {props.children}
+        </Segment>
+    )
+})
 
 const mapStateToProps = state => {
     return { messages: state.messages };
