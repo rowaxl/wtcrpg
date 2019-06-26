@@ -15,9 +15,8 @@ class ChatLogs extends React.Component {
 
     scrollToBottom = () => {
         const chatContainer = this.chatLogsRef.current;
-        console.log(chatContainer);
         if(!chatContainer) return;
-        this.chatLogsRef.current.scrollTo(0, 10000);
+        this.chatLogsRef.current.children[0].scrollTo(0, chatContainer.clientHeight);
     }
 
     renderMessages = () => {
@@ -32,7 +31,6 @@ class ChatLogs extends React.Component {
 
     render() {
         return (
-            // refs fail. why?
             <ChatLogTarget ref={this.chatLogsRef} children={this.renderMessages()} />
         );
     };
@@ -40,11 +38,13 @@ class ChatLogs extends React.Component {
 
 const ChatLogTarget = React.forwardRef((props, ref) => {
     return (
-        <Segment ref={ref} inverted style={{overflow: 'auto', height: '70vh'}}>
-            {props.children}
-        </Segment>
-    )
-})
+        <div id="chatLogTarget" ref={ref}>
+            <Segment inverted style={{overflow: 'auto', height: '70vh'}}>
+                {props.children}
+            </Segment>
+        </div>
+    );
+});
 
 const mapStateToProps = state => {
     return { messages: state.messages };

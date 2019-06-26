@@ -22,7 +22,7 @@ class TextInput extends React.Component {
         if(!text) return;
 
         // TODO: this will be DELETED
-        const _id = Math.max(this.props.messages.map(message => message.id));
+        const _id = this.props.messages.length + 1;
 
         this.props.sendMessage({id:_id, user:this.props.user, text, created:Date.now()});
         this.setState({ value: '' });
