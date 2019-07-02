@@ -23,9 +23,12 @@ class TextInput extends React.Component {
 
         if (text.indexOf('/dice') > -1) {
             const diceList = text.split('/dice')[1].split(' ').filter(e => e);
-            console.log(diceList);
             const result = await this.rollDices(diceList);
-            console.log(result);
+
+            // TODO: append rolling effect
+            setTimeout(() => {
+                this.props.sendMessage({id:_id, user:this.props.user, text:JSON.stringify(result), created:Date.now()});
+            }, 100);
         }
 
         // TODO: this will be DELETED
@@ -37,6 +40,8 @@ class TextInput extends React.Component {
 
     rollDices = diceList => new Promise((resolve, reject) => {
         let result = [];
+        let rolledSum = 0;
+
         diceList.forEach(dice => {
             const diceNum = dice.split(/[dD]/g)[0];
             const diceType = dice.split(/[dD]/g)[1];
@@ -45,12 +50,13 @@ class TextInput extends React.Component {
             while(++i <= diceNum) {
                 // min value must be 1
                 const rolled = Math.floor(Math.random() * parseInt(diceType) + 1);
-                result.push({dice, rolled});
+                result.push(`${dice} => ${rolled}`);
+                rolledSum += rolled;
             }
         });
 
         if(result.length === 0) return reject('failed to rolled the dice');
-        resolve(result);
+        resolve({result, sum: rolledSum});
     })
 
     render() {
