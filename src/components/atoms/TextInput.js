@@ -40,7 +40,6 @@ class TextInput extends React.Component {
 
     rollDices = diceList => new Promise((resolve, reject) => {
         let result = [];
-        let rolledSum = 0;
 
         diceList.forEach(dice => {
             const diceNum = dice.split(/[dD]/g)[0];
