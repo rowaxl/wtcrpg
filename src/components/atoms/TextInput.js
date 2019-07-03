@@ -50,13 +50,12 @@ class TextInput extends React.Component {
             while(++i <= diceNum) {
                 // min value must be 1
                 const rolled = Math.floor(Math.random() * parseInt(diceType) + 1);
-                result.push(`${dice} => ${rolled}`);
-                rolledSum += rolled;
+                result.push({diceType, rolled});
             }
         });
 
         if(result.length === 0) return reject('failed to rolled the dice');
-        resolve({result, sum: rolledSum});
+        resolve(result);
     })
 
     render() {
